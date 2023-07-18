@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height: 100vh;
+    background-color:rgb(58, 55, 55);
+}
+.contenedor {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.boton-giro {
+    position: absolute;
+    width:60px;
+    height:60px;
+    z-index:2;
+    background-color: rgb(5, 4, 4);
+    border-radius:50%;  /* Transformo el div en un circulo*/
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #5f5e5e;
+    border: 2px solid black;
+    cursor: pointer;
+    user-select:none;
+}
+.boton-giro:before {
+    content: "";
+    position:absolute;
+    top:-31.5px;
+    width:20px;
+    height:30px;
+    background-color:rgb(12, 12, 12);
+    clip-path: polygon(50% 0%, 11% 100%, 89% 100%); /*Para darle la forma de triangulo, uso la pag https://bennettfeely.com/clippy/ */
+    border-bottom:2px solid black;
+}
+.ruleta {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#000000;
+    border: 2px solid black;
+    box-shadow: 0px 0px 8px white;
+    border-radius:50%;
+    overflow: hidden; /*Como los divs son cuadrados, escondemos todo lo que este porfuera del circulo */
+    transition: transform 3s ease-in-out; /*Indico que la transformacion es lo que quiero que se anime, ease-in-out hace que la animacion tenga principio y final lento y la parte del medio rapida*/
+}   
+.numeros {
+    position:absolute;
+    font-size:2em;
+    font-weight: 700;
+    width:50%;
+    height:50%;
+    background:var(--color);
+    transform-origin: bottom right; /* La propiedad CSS transform-origin le permite modificar el origen de las transformaciones de un elemento */
+    transform: rotate(calc(45deg*var(--i))); /*por cada div, lo rotamos 45*i grados*/
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    clip-path: polygon(0 0, 60% 0, 100% 100%, 0 60%);
+}
+.numeros span {
+    transform: rotate(45deg);
+    text-shadow: 3px 4px 2px rgba(0, 0,0,.15);
+}
